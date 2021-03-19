@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76579042d9464bc4b7727e1e84750d0e" Name="Diagram1">
+        <EntityTypeShape EntityType="LaboratoryModel.analyzer" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.analyzer_blood_service" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.blood" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.blood_service" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.employee" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.employee_service" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.history" Width="1.5" PointX="3.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.insurance" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.patient" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.service" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.status" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.user" Width="1.5" PointX="1.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratoryModel.user_type" Width="1.5" PointX="1.5" PointY="20.25" IsExpanded="true" />
+        <AssociationConnector Association="LaboratoryModel.FK_analyzer_service_analyzer" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_analyzer_service_blood_service" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_patient" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_service_blood" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_status" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_service_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_service_service" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_service_status" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_employee_service_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_employee_user" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_employee_service_service" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_history_user" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_patient_insurance" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_patient_user" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_user_user_type" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratoryModel.FK_blood_service_status1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
