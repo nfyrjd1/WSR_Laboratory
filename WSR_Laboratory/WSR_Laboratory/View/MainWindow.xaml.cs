@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,9 +21,12 @@ namespace WSR_Laboratory.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        Timer WorkTimer;
+        DateTime WorkTime;
         public MainWindow()
         {
             InitializeComponent();
+
             Manager.MainFrame = MainFrame;
             MainFrame.Navigate(new UserPage());
 
@@ -37,11 +41,13 @@ namespace WSR_Laboratory.View
                 case "Лаборант": {
                         ReportBtn.Visibility = Visibility.Visible;
                         BloodBtn.Visibility = Visibility.Visible;
+                        SetWorkTimer();
                         break;
                     }
                 case "Лаборант-исследователь":
                     {
                         AnalyzerBtn.Visibility = Visibility.Visible;
+                        SetWorkTimer();
                         break;
                     }
                 case "Бухгалтер":
@@ -50,6 +56,41 @@ namespace WSR_Laboratory.View
                         ReportBtn.Visibility = Visibility.Visible;
                         break;
                     }
+            }
+        }
+
+        private void SetWorkTimer()
+        {
+            WorkTime = new DateTime();
+            Time.Text = WorkTime.ToShortTimeString();
+
+            WorkTimer = new Timer();
+            WorkTimer.Interval = 60000;
+            WorkTimer.Start();
+            WorkTimer.Elapsed += Timer_Elapsed;
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            WorkTime = WorkTime.AddMinutes(1);
+            Dispatcher.Invoke(() => Time.Text = WorkTime.ToShortTimeString());
+            //2:15
+            if (WorkTime.ToShortTimeString() == "0:05")
+            {
+                Dispatcher.Invoke(() => MessageBox.Show("Ваш сеанс работы закончится через 15 минут", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning));
+            }
+
+            //2:30
+            if (WorkTime.ToShortTimeString() == "0:10")
+            {
+                WorkTimer.Stop();
+                Dispatcher.Invoke(() => {
+                    MessageBox.Show("Кварцевание помещения, работа приложения заблокирована на 30 минут", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Manager.Auth.Show();
+                    Hide();
+                    Manager.Auth.BlockAuth(60);
+                    Close();
+                });
             }
         }
 

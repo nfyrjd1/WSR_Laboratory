@@ -15,7 +15,7 @@
 
         <Grid Background="#76E383" Grid.ColumnSpan="2"></Grid>
         <Image Margin="5,0,0,0" HorizontalAlignment="Left"  Source="../Resources/logo.png" Height="75"/>
-        <TextBlock Text="Лаборатория"  Style="{StaticResource Text}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <TextBlock Text="Медлаборатория №20"  Style="{StaticResource Text}" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
 
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="20,60,0,0" >
             <StackPanel Orientation="Horizontal">
@@ -32,6 +32,18 @@
                 <TextBlock Text="" Style="{StaticResource Text}"/>
                 <Button Content="Войти" x:Name="SignInBtn" Click="SignInBtn_Click"/>
             </StackPanel>
+            <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed">
+                <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                    <TextBlock x:Name="Captcha1" Margin="0,50,20,0" FontSize="30" Width="Auto" Style="{StaticResource Text}" IsEnabled="False" Text="S"/>
+                    <TextBlock x:Name="Captcha2" FontSize="30" Width="Auto" Style="{StaticResource Text}" IsEnabled="False" Text="o"/>
+                    <TextBlock x:Name="Captcha3" Margin="20,30,20,0" FontSize="30" Width="Auto" Style="{StaticResource Text}" IsEnabled="False" Text="M"/>
+                    <TextBlock x:Name="Captcha4" Margin="0,50,0,0" FontSize="30" Width="Auto" Style="{StaticResource Text}" IsEnabled="False" Text="e"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="CaptchaTB" HorizontalAlignment="Left" MaxWidth="100"/>
+                    <Button x:Name="UpdateCaptcha" Click="UpdateCaptcha_Click" Content="Обновить"/>
+                </StackPanel>                
+            </StackPanel>            
         </StackPanel>
     </Grid>
 </Window>

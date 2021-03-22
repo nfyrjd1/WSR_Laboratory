@@ -14,13 +14,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Background="#76E383" Grid.ColumnSpan="2"></Grid>
+        <Grid Background="#76E383" Grid.ColumnSpan="3"></Grid>
         <Image  Source="../Resources/logo.png" Height="75"/>
-        <TextBlock Text="Лаборатория" Style="{StaticResource Text}" Grid.Column="1" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <TextBlock Text="Медлаборатория №20" Style="{StaticResource Text}" Grid.Column="1" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <TextBlock VerticalAlignment="Center" x:Name="Time" Width="Auto" Grid.Column="2" Style="{StaticResource Text}"/>
 
-        <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1" x:Name="MainFrame"/>
+        <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="MainFrame"/>
 
         <StackPanel Grid.Row="1">
             <Button Content="Пользователь" Width="135" x:Name="UserBtn" Click="UserBtn_Click"/>

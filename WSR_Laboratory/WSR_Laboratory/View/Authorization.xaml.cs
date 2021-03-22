@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WSR_Laboratory.Model;
@@ -23,10 +24,125 @@ namespace WSR_Laboratory.View
     /// </summary>
     public partial class Authorization : Window
     {
+        Timer Timer = new Timer();
+        string Captcha = "";
+
         public Authorization()
         {
             InitializeComponent();
             Manager.Auth = this;
+            if (Properties.Settings.Default.BlockedSeconds > 0)
+            {
+                BlockAuth();
+            }            
+        }
+
+        private void UpdateCaptcha_Click(object sender, RoutedEventArgs e)
+        {
+            Captcha = GenerateCaptcha();
+        }
+
+        private string GenerateCaptcha()
+        {
+            string CaptchaSymbols = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+            string captcha = "";
+            Random rnd = new Random();
+
+            CaptchaPanel.Visibility = Visibility.Visible;
+            CaptchaTB.Text = "";
+
+            Captcha1.Text = CaptchaSymbols[rnd.Next(0, CaptchaSymbols.Length - 1)].ToString();
+            captcha += Captcha1.Text;
+            Captcha1.Margin = new Thickness(rnd.Next(1, 2) * 10, rnd.Next(0, 5) * 10, 0, 0);
+            CaptchaEffect(Captcha1, rnd);
+
+            Captcha2.Text = CaptchaSymbols[rnd.Next(0, CaptchaSymbols.Length - 1)].ToString();
+            captcha += Captcha2.Text;
+            Captcha2.Margin = new Thickness(rnd.Next(1, 2) * 10, rnd.Next(0, 5) * 10, 0, 0);
+            CaptchaEffect(Captcha2, rnd);
+
+            Captcha3.Text = CaptchaSymbols[rnd.Next(0, CaptchaSymbols.Length - 1)].ToString();
+            captcha += Captcha3.Text;
+            Captcha3.Margin = new Thickness(rnd.Next(1, 2) * 10, rnd.Next(0, 5) * 10, 0, 0);
+            CaptchaEffect(Captcha3, rnd);
+
+            Captcha4.Text = CaptchaSymbols[rnd.Next(0, CaptchaSymbols.Length - 1)].ToString();
+            captcha += Captcha4.Text;
+            Captcha4.Margin = new Thickness(rnd.Next(1, 2) * 10, rnd.Next(0, 5) * 10, 0, 0);
+            CaptchaEffect(Captcha4, rnd);
+
+            return captcha;
+        }
+
+        private void CaptchaEffect(TextBlock Captcha, Random rnd)
+        {
+            int random = rnd.Next(0, 100);
+            if (random < 25)
+            {
+                Captcha.Effect = new BlurEffect();
+                return;
+            }
+            if (random < 50)
+            {
+                Captcha.Effect = new DropShadowEffect();
+                return;
+            }
+            if (random < 75)
+            {
+                Captcha.Effect = new BlurEffect();
+                TextDecoration line = new TextDecoration();
+                line.Pen = new Pen(Brushes.Red, 1);
+                line.PenThicknessUnit = TextDecorationUnit.FontRecommended;
+                line.Location = TextDecorationLocation.Strikethrough;
+                Captcha.TextDecorations.Add(line);
+                return;
+            }
+            if (random <= 100)
+            {
+                Captcha.Effect = new DropShadowEffect();
+                TextDecoration line = new TextDecoration();
+                line.Pen = new Pen(Brushes.Red, 1);
+                line.PenThicknessUnit = TextDecorationUnit.FontRecommended;
+                line.Location = TextDecorationLocation.Strikethrough;
+                Captcha.TextDecorations.Add(line);
+                return;
+            }
+        }
+
+        public void BlockAuth(int Seconds = 0)
+        {
+            LoginTextBox.IsEnabled = false;
+            PasswordBox.IsEnabled = false;
+            PasswordTB.IsEnabled = false;
+            SignInBtn.IsEnabled = false;
+
+            if (Seconds > 0)
+            {
+                Properties.Settings.Default.BlockedTime = DateTime.Now;
+                Properties.Settings.Default.BlockedSeconds = Seconds;
+                Properties.Settings.Default.Save();
+            }
+
+            Timer Timer = new Timer();
+            Timer.Interval = 1000;
+            Timer.Elapsed += Timer_Elapsed;
+            Timer.Start();
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (Properties.Settings.Default.BlockedTime.AddSeconds(Properties.Settings.Default.BlockedSeconds) < DateTime.Now)
+            {
+                Properties.Settings.Default.BlockedSeconds = 0;
+                Properties.Settings.Default.Save();
+
+                Dispatcher.Invoke(() => { 
+                    LoginTextBox.IsEnabled = true;
+                    PasswordBox.IsEnabled = true;
+                    SignInBtn.IsEnabled = true;
+                    PasswordTB.IsEnabled = true;
+                });
+            }            
         }
 
         private void Auth_Closed(object sender, EventArgs e)
@@ -47,9 +163,20 @@ namespace WSR_Laboratory.View
                 errors.AppendLine("Вы не ввели пароль пользователя!");
             }
 
+            if (!string.IsNullOrEmpty(Captcha) && string.IsNullOrWhiteSpace(CaptchaTB.Text))
+            {
+                errors.AppendLine("Введите капчу!");
+            }
+            else if (!string.IsNullOrEmpty(Captcha) && CaptchaTB.Text != Captcha)
+            {
+                errors.AppendLine("Неверная капча!");
+                BlockAuth(10);
+            }
+
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                Captcha = GenerateCaptcha();
                 return;
             }
 
@@ -64,6 +191,7 @@ namespace WSR_Laboratory.View
                 Laboratory.GetContext().history.Add(historyError);
                 Laboratory.GetContext().SaveChanges();
                 MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                Captcha = GenerateCaptcha();
                 return;
             }
 
@@ -82,13 +210,16 @@ namespace WSR_Laboratory.View
                 window.Show();
                 Hide();
 
+                CaptchaPanel.Visibility = Visibility.Collapsed;
                 PasswordBox.Password = "";
                 PasswordTB.Text = "";
                 LoginTextBox.Text = "";
+                Captcha = "";
             }
             else
             {
                 MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                Captcha = GenerateCaptcha();
             }
         }
 
@@ -106,6 +237,11 @@ namespace WSR_Laboratory.View
                 PasswordBox.Password = PasswordTB.Text;
             }
         }
+
+
+
+
+
 
         private void ImportBloodService()
         {

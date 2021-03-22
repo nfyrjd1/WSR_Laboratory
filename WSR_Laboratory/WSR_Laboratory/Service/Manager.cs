@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using WSR_Laboratory.Model;
+using WSR_Laboratory.View;
 
 namespace WSR_Laboratory.Service
 {
@@ -15,6 +16,6 @@ namespace WSR_Laboratory.Service
 
         public static Frame MainFrame;
 
-        public static Window Auth;
+        public static Authorization Auth;
     }
 }
