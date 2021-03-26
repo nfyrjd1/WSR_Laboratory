@@ -30,13 +30,14 @@ namespace WSR_Laboratory.Model
         public System.DateTime birthday { get; set; }
         public string country { get; set; }
         public decimal social_number { get; set; }
-        public bool social_type { get; set; }
-        public int id_user { get; set; }
+        public int id_social_type { get; set; }
+        public Nullable<int> id_user { get; set; }
         public int id_insurance { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<blood> blood { get; set; }
         public virtual insurance insurance { get; set; }
+        public virtual social_type social_type { get; set; }
         public virtual user user { get; set; }
     }
 }

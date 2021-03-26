@@ -23,11 +23,11 @@ namespace WSR_Laboratory.Model
         public int id_blood_service { get; set; }
         public int id_blood { get; set; }
         public int id_service { get; set; }
-        public int id_status { get; set; }
+        public Nullable<int> id_status { get; set; }
         public Nullable<System.DateTime> date_finished { get; set; }
         public Nullable<decimal> result { get; set; }
         public Nullable<bool> accepted { get; set; }
-        public int id_employee { get; set; }
+        public Nullable<int> id_employee { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analyzer_blood_service> analyzer_blood_service { get; set; }
@@ -35,6 +35,5 @@ namespace WSR_Laboratory.Model
         public virtual employee employee { get; set; }
         public virtual service service { get; set; }
         public virtual status status { get; set; }
-        public virtual status status1 { get; set; }
     }
 }

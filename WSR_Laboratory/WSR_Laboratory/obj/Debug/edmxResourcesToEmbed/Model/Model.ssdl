@@ -22,12 +22,12 @@
     <Key>
       <PropertyRef Name="id_blood" />
     </Key>
-    <Property Name="id_blood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_blood" Type="int" Nullable="false" />
     <Property Name="id_patient" Type="int" Nullable="false" />
     <Property Name="barcode" Type="numeric" Precision="7" Scale="0" Nullable="false" />
-    <Property Name="date_create" Type="date" Nullable="false" />
-    <Property Name="analyze_time_days" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-    <Property Name="id_status" Type="int" Nullable="false" />
+    <Property Name="date_create" Type="datetime" Nullable="false" />
+    <Property Name="analyze_time_days" Type="numeric" Precision="3" Scale="0" />
+    <Property Name="id_status" Type="int" />
   </EntityType>
   <EntityType Name="blood_service">
     <Key>
@@ -36,11 +36,11 @@
     <Property Name="id_blood_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_blood" Type="int" Nullable="false" />
     <Property Name="id_service" Type="int" Nullable="false" />
-    <Property Name="id_status" Type="int" Nullable="false" />
+    <Property Name="id_status" Type="int" />
     <Property Name="date_finished" Type="date" />
     <Property Name="result" Type="numeric" Precision="6" Scale="5" />
     <Property Name="accepted" Type="bit" />
-    <Property Name="id_employee" Type="int" Nullable="false" />
+    <Property Name="id_employee" Type="int" />
   </EntityType>
   <EntityType Name="employee">
     <Key>
@@ -87,15 +87,15 @@
     <Property Name="id_patient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="full_name" Type="nvarchar" MaxLength="80" Nullable="false" />
     <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ein" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ein" Type="nvarchar" MaxLength="10" />
     <Property Name="phone" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="passport_series" Type="numeric" Precision="4" Scale="0" Nullable="false" />
     <Property Name="passport_number" Type="numeric" Precision="6" Scale="0" Nullable="false" />
     <Property Name="birthday" Type="date" Nullable="false" />
-    <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="country" Type="nvarchar" MaxLength="50" />
     <Property Name="social_number" Type="numeric" Precision="8" Scale="0" Nullable="false" />
-    <Property Name="social_type" Type="bit" Nullable="false" />
-    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="id_social_type" Type="int" Nullable="false" />
+    <Property Name="id_user" Type="int" />
     <Property Name="id_insurance" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="service">
@@ -106,6 +106,13 @@
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="code" Type="numeric" Precision="3" Scale="0" Nullable="false" />
     <Property Name="price" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="social_type">
+    <Key>
+      <PropertyRef Name="id_social_type" />
+    </Key>
+    <Property Name="id_social_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="status">
     <Key>
@@ -179,7 +186,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_blood_service_employee">
-    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
     <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="employee">
@@ -203,7 +210,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_blood_service_status">
-    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="status" Type="Self.status" Multiplicity="0..1" />
     <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="status">
@@ -215,7 +222,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_blood_status">
-    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="status" Type="Self.status" Multiplicity="0..1" />
     <End Role="blood" Type="Self.blood" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="status">
@@ -286,8 +293,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_patient_social_type">
+    <End Role="social_type" Type="Self.social_type" Multiplicity="1" />
+    <End Role="patient" Type="Self.patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="social_type">
+        <PropertyRef Name="id_social_type" />
+      </Principal>
+      <Dependent Role="patient">
+        <PropertyRef Name="id_social_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_patient_user">
-    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
     <End Role="patient" Type="Self.patient" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -321,6 +340,7 @@
     <EntitySet Name="insurance" EntityType="Self.insurance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="patient" EntityType="Self.patient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="social_type" EntityType="Self.social_type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_type" EntityType="Self.user_type" Schema="dbo" store:Type="Tables" />
@@ -374,6 +394,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_patient_insurance" Association="Self.FK_patient_insurance">
       <End Role="insurance" EntitySet="insurance" />
+      <End Role="patient" EntitySet="patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_patient_social_type" Association="Self.FK_patient_social_type">
+      <End Role="social_type" EntitySet="social_type" />
       <End Role="patient" EntitySet="patient" />
     </AssociationSet>
     <AssociationSet Name="FK_patient_user" Association="Self.FK_patient_user">

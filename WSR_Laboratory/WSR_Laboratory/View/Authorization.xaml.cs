@@ -339,7 +339,7 @@ namespace WSR_Laboratory.View
                 patient.email = itemData[4];
                 patient.social_number = decimal.Parse(itemData[5]);
                 patient.ein = itemData[6];
-                patient.social_type = itemData[7] == "oms";
+                //patient.social_type = itemData[7] == "oms";
                 patient.phone = itemData[8];
                 patient.passport_series = decimal.Parse(itemData[9]);
                 patient.passport_number = decimal.Parse(itemData[10]);

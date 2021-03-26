@@ -41,6 +41,8 @@ namespace WSR_Laboratory.View
                 case "Лаборант": {
                         ReportBtn.Visibility = Visibility.Visible;
                         BloodBtn.Visibility = Visibility.Visible;
+                        PatientsBtn.Visibility = Visibility.Visible;
+                        ServiceBtn.Visibility = Visibility.Visible;
                         SetWorkTimer();
                         break;
                     }
@@ -112,6 +114,21 @@ namespace WSR_Laboratory.View
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void BloodBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new BloodPage());
+        }
+
+        private void PatientsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new PatientPage());
+        }
+
+        private void ServiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ServicePage());
         }
     }
 }

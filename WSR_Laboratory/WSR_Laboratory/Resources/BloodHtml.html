@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Заказ</title>
+    <style>
+        body {
+            font-size: 20px;
+        }
+        .title {
+            font-size: 30px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%;
+        }
+        td {
+            border: 1px solid black;
+        }
+        .services {
+            margin-top: 30px;
+            margin-bottom: 10px
+        }
+        p {
+            text-wrap: normal;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <p class="title">Заказ</p>
+    <p>Ссылка: @Link</p>
+    <p>Дата заказа: @Date</p>
+    <p>Номер заказа: @IdBlood</p>
+    <p>Номер пробирки: @Barcode</p>
+    <p>Номер страхового полиса: @SocianNumber</p>
+    <p>ФИО пациента: @FullName</p>
+    <p>Дата рождения: @Birthday</p>
+    <p class="services">Услуги:</p>
+    <table>
+        <thead>
+            <tr>
+                <td>Услуга</td>
+                <td>Цена</td>
+            </tr>
+        </thead>
+        <tbody>
+            @Services
+        </tbody>
+    </table>
+    <p>Итого: @ServiceSum</p>
+</body>
+</html>

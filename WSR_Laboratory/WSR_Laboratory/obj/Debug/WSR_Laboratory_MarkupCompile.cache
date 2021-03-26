@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\View\App.xaml
-41163925535
+10-1677521135
 2482335943
-271087415219
-19-1105597927
-View\Authorization.xaml;View\HistoryPage.xaml;View\MainWindow.xaml;View\UserPage.xaml;
+37-420739479
+32-1150811304
+View\AddEditBlood.xaml;View\AddEditPatient.xaml;View\Authorization.xaml;View\BloodPage.xaml;View\HistoryPage.xaml;View\MainWindow.xaml;View\ModalWindow.xaml;View\PatientPage.xaml;View\ServicePage.xaml;View\UserPage.xaml;
 
 False
 

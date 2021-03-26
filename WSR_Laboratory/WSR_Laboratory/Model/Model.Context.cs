@@ -35,6 +35,7 @@ namespace WSR_Laboratory.Model
         public virtual DbSet<insurance> insurance { get; set; }
         public virtual DbSet<patient> patient { get; set; }
         public virtual DbSet<service> service { get; set; }
+        public virtual DbSet<social_type> social_type { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<user_type> user_type { get; set; }

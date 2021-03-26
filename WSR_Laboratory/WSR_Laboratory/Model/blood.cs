@@ -24,8 +24,8 @@ namespace WSR_Laboratory.Model
         public int id_patient { get; set; }
         public decimal barcode { get; set; }
         public System.DateTime date_create { get; set; }
-        public decimal analyze_time_days { get; set; }
-        public int id_status { get; set; }
+        public Nullable<decimal> analyze_time_days { get; set; }
+        public Nullable<int> id_status { get; set; }
     
         public virtual patient patient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

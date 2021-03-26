@@ -19,7 +19,6 @@ namespace WSR_Laboratory.Model
         {
             this.blood = new HashSet<blood>();
             this.blood_service = new HashSet<blood_service>();
-            this.blood_service1 = new HashSet<blood_service>();
         }
     
         public int id_status { get; set; }
@@ -29,7 +28,5 @@ namespace WSR_Laboratory.Model
         public virtual ICollection<blood> blood { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<blood_service> blood_service { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<blood_service> blood_service1 { get; set; }
     }
 }
