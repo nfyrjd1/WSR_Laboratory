@@ -103,6 +103,10 @@ namespace WSR_Laboratory.View
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
+            if (WorkTimer != null)
+            {
+                WorkTimer.Stop();
+            }
             Manager.Auth.Show();
         }
 
