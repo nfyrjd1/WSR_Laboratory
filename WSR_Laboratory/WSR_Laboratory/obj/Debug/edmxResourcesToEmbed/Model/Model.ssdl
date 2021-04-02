@@ -18,6 +18,14 @@
     <Property Name="date_finished" Type="datetime" />
     <Property Name="analyze_time_sec" Type="numeric" Precision="6" Scale="0" />
   </EntityType>
+  <EntityType Name="analyzer_service">
+    <Key>
+      <PropertyRef Name="id_analuzer_service" />
+    </Key>
+    <Property Name="id_analuzer_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_service" Type="int" Nullable="false" />
+    <Property Name="id_analyzer" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="blood">
     <Key>
       <PropertyRef Name="id_blood" />
@@ -38,7 +46,7 @@
     <Property Name="id_service" Type="int" Nullable="false" />
     <Property Name="id_status" Type="int" />
     <Property Name="date_finished" Type="date" />
-    <Property Name="result" Type="numeric" Precision="6" Scale="5" />
+    <Property Name="result" Type="nvarchar" MaxLength="20" />
     <Property Name="accepted" Type="bit" />
     <Property Name="id_employee" Type="int" />
   </EntityType>
@@ -106,6 +114,7 @@
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="code" Type="numeric" Precision="3" Scale="0" Nullable="false" />
     <Property Name="price" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="result_type" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="social_type">
     <Key>
@@ -149,6 +158,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_analyzer_service_analyzer1">
+    <End Role="analyzer" Type="Self.analyzer" Multiplicity="1" />
+    <End Role="analyzer_service" Type="Self.analyzer_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="analyzer">
+        <PropertyRef Name="id_analyzer" />
+      </Principal>
+      <Dependent Role="analyzer_service">
+        <PropertyRef Name="id_analyzer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_analyzer_service_blood_service">
     <End Role="blood_service" Type="Self.blood_service" Multiplicity="1" />
     <End Role="analyzer_blood_service" Type="Self.analyzer_blood_service" Multiplicity="*" />
@@ -158,6 +179,18 @@
       </Principal>
       <Dependent Role="analyzer_blood_service">
         <PropertyRef Name="id_blood_service" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_analyzer_service_service">
+    <End Role="service" Type="Self.service" Multiplicity="1" />
+    <End Role="analyzer_service" Type="Self.analyzer_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="id_service" />
+      </Principal>
+      <Dependent Role="analyzer_service">
+        <PropertyRef Name="id_service" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -332,6 +365,7 @@
   <EntityContainer Name="Хранилище LaboratoryModelContainer">
     <EntitySet Name="analyzer" EntityType="Self.analyzer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="analyzer_blood_service" EntityType="Self.analyzer_blood_service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="analyzer_service" EntityType="Self.analyzer_service" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="blood" EntityType="Self.blood" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="blood_service" EntityType="Self.blood_service" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
@@ -348,9 +382,17 @@
       <End Role="analyzer" EntitySet="analyzer" />
       <End Role="analyzer_blood_service" EntitySet="analyzer_blood_service" />
     </AssociationSet>
+    <AssociationSet Name="FK_analyzer_service_analyzer1" Association="Self.FK_analyzer_service_analyzer1">
+      <End Role="analyzer" EntitySet="analyzer" />
+      <End Role="analyzer_service" EntitySet="analyzer_service" />
+    </AssociationSet>
     <AssociationSet Name="FK_analyzer_service_blood_service" Association="Self.FK_analyzer_service_blood_service">
       <End Role="blood_service" EntitySet="blood_service" />
       <End Role="analyzer_blood_service" EntitySet="analyzer_blood_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_analyzer_service_service" Association="Self.FK_analyzer_service_service">
+      <End Role="service" EntitySet="service" />
+      <End Role="analyzer_service" EntitySet="analyzer_service" />
     </AssociationSet>
     <AssociationSet Name="FK_blood_patient" Association="Self.FK_blood_patient">
       <End Role="patient" EntitySet="patient" />

@@ -25,7 +25,7 @@ namespace WSR_Laboratory.Model
         public int id_service { get; set; }
         public Nullable<int> id_status { get; set; }
         public Nullable<System.DateTime> date_finished { get; set; }
-        public Nullable<decimal> result { get; set; }
+        public string result { get; set; }
         public Nullable<bool> accepted { get; set; }
         public Nullable<int> id_employee { get; set; }
     

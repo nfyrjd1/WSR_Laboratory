@@ -3,6 +3,7 @@
   <EntityContainer Name="Laboratory" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="analyzer" EntityType="LaboratoryModel.analyzer" />
     <EntitySet Name="analyzer_blood_service" EntityType="LaboratoryModel.analyzer_blood_service" />
+    <EntitySet Name="analyzer_service" EntityType="LaboratoryModel.analyzer_service" />
     <EntitySet Name="blood" EntityType="LaboratoryModel.blood" />
     <EntitySet Name="blood_service" EntityType="LaboratoryModel.blood_service" />
     <EntitySet Name="employee" EntityType="LaboratoryModel.employee" />
@@ -19,9 +20,17 @@
       <End Role="analyzer" EntitySet="analyzer" />
       <End Role="analyzer_blood_service" EntitySet="analyzer_blood_service" />
     </AssociationSet>
+    <AssociationSet Name="FK_analyzer_service_analyzer1" Association="LaboratoryModel.FK_analyzer_service_analyzer1">
+      <End Role="analyzer" EntitySet="analyzer" />
+      <End Role="analyzer_service" EntitySet="analyzer_service" />
+    </AssociationSet>
     <AssociationSet Name="FK_analyzer_service_blood_service" Association="LaboratoryModel.FK_analyzer_service_blood_service">
       <End Role="blood_service" EntitySet="blood_service" />
       <End Role="analyzer_blood_service" EntitySet="analyzer_blood_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_analyzer_service_service" Association="LaboratoryModel.FK_analyzer_service_service">
+      <End Role="service" EntitySet="service" />
+      <End Role="analyzer_service" EntitySet="analyzer_service" />
     </AssociationSet>
     <AssociationSet Name="FK_blood_patient" Association="LaboratoryModel.FK_blood_patient">
       <End Role="patient" EntitySet="patient" />
@@ -87,6 +96,7 @@
     <Property Name="id_analyzer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="analyzer_blood_service" Relationship="LaboratoryModel.FK_analyzer_service_analyzer" FromRole="analyzer" ToRole="analyzer_blood_service" />
+    <NavigationProperty Name="analyzer_service" Relationship="LaboratoryModel.FK_analyzer_service_analyzer1" FromRole="analyzer" ToRole="analyzer_service" />
   </EntityType>
   <EntityType Name="analyzer_blood_service">
     <Key>
@@ -100,6 +110,16 @@
     <Property Name="analyze_time_sec" Type="Decimal" Precision="6" Scale="0" />
     <NavigationProperty Name="analyzer" Relationship="LaboratoryModel.FK_analyzer_service_analyzer" FromRole="analyzer_blood_service" ToRole="analyzer" />
     <NavigationProperty Name="blood_service" Relationship="LaboratoryModel.FK_analyzer_service_blood_service" FromRole="analyzer_blood_service" ToRole="blood_service" />
+  </EntityType>
+  <EntityType Name="analyzer_service">
+    <Key>
+      <PropertyRef Name="id_analuzer_service" />
+    </Key>
+    <Property Name="id_analuzer_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_service" Type="Int32" Nullable="false" />
+    <Property Name="id_analyzer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="analyzer" Relationship="LaboratoryModel.FK_analyzer_service_analyzer1" FromRole="analyzer_service" ToRole="analyzer" />
+    <NavigationProperty Name="service" Relationship="LaboratoryModel.FK_analyzer_service_service" FromRole="analyzer_service" ToRole="service" />
   </EntityType>
   <EntityType Name="blood">
     <Key>
@@ -124,7 +144,7 @@
     <Property Name="id_service" Type="Int32" Nullable="false" />
     <Property Name="id_status" Type="Int32" />
     <Property Name="date_finished" Type="DateTime" Precision="0" />
-    <Property Name="result" Type="Decimal" Precision="6" Scale="5" />
+    <Property Name="result" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="accepted" Type="Boolean" />
     <Property Name="id_employee" Type="Int32" />
     <NavigationProperty Name="analyzer_blood_service" Relationship="LaboratoryModel.FK_analyzer_service_blood_service" FromRole="blood_service" ToRole="analyzer_blood_service" />
@@ -208,6 +228,8 @@
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="code" Type="Decimal" Nullable="false" Precision="3" Scale="0" />
     <Property Name="price" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="result_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="analyzer_service" Relationship="LaboratoryModel.FK_analyzer_service_service" FromRole="service" ToRole="analyzer_service" />
     <NavigationProperty Name="blood_service" Relationship="LaboratoryModel.FK_blood_service_service" FromRole="service" ToRole="blood_service" />
     <NavigationProperty Name="employee_service" Relationship="LaboratoryModel.FK_employee_service_service" FromRole="service" ToRole="employee_service" />
   </EntityType>
@@ -261,6 +283,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_analyzer_service_analyzer1">
+    <End Type="LaboratoryModel.analyzer" Role="analyzer" Multiplicity="1" />
+    <End Type="LaboratoryModel.analyzer_service" Role="analyzer_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="analyzer">
+        <PropertyRef Name="id_analyzer" />
+      </Principal>
+      <Dependent Role="analyzer_service">
+        <PropertyRef Name="id_analyzer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_analyzer_service_blood_service">
     <End Type="LaboratoryModel.blood_service" Role="blood_service" Multiplicity="1" />
     <End Type="LaboratoryModel.analyzer_blood_service" Role="analyzer_blood_service" Multiplicity="*" />
@@ -270,6 +304,18 @@
       </Principal>
       <Dependent Role="analyzer_blood_service">
         <PropertyRef Name="id_blood_service" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_analyzer_service_service">
+    <End Type="LaboratoryModel.service" Role="service" Multiplicity="1" />
+    <End Type="LaboratoryModel.analyzer_service" Role="analyzer_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="id_service" />
+      </Principal>
+      <Dependent Role="analyzer_service">
+        <PropertyRef Name="id_service" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

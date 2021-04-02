@@ -270,7 +270,7 @@ namespace WSR_Laboratory.View
                     return;
                 }
                 blood_service.blood = blood;
-                blood_service.result = decimal.Parse(itemData[2]);
+                //blood_service.result = decimal.Parse(itemData[2]);
                 blood_service.date_finished = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(itemData[3])).DateTime;
                 blood_service.accepted = bool.Parse(itemData[4]);
                 blood_service.id_status = itemData[5] == "Finished" ? 1 : 2;

@@ -21,6 +21,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="analyzer_service">
+      <EntityTypeMapping TypeName="LaboratoryModel.analyzer_service">
+        <MappingFragment StoreEntitySet="analyzer_service">
+          <ScalarProperty Name="id_analyzer" ColumnName="id_analyzer" />
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+          <ScalarProperty Name="id_analuzer_service" ColumnName="id_analuzer_service" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="blood">
       <EntityTypeMapping TypeName="LaboratoryModel.blood">
         <MappingFragment StoreEntitySet="blood">
@@ -111,6 +120,7 @@
     <EntitySetMapping Name="service">
       <EntityTypeMapping TypeName="LaboratoryModel.service">
         <MappingFragment StoreEntitySet="service">
+          <ScalarProperty Name="result_type" ColumnName="result_type" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="name" ColumnName="name" />

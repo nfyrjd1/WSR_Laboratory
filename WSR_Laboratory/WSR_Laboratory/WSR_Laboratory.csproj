@@ -83,6 +83,9 @@
     <Reference Include="itext.svg, Version=7.1.14.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.14\lib\net40\itext.svg.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -101,6 +104,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="View\App.xaml">
@@ -113,10 +119,15 @@
     <Compile Include="Model\analyzer_blood_service.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\analyzer_service.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AnalzerClass.cs" />
     <Compile Include="Model\blood.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BloodClass.cs" />
+    <Compile Include="Model\BloodServiceClass.cs" />
     <Compile Include="Model\blood_service.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -152,6 +163,7 @@
     <Compile Include="Model\user_type.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\AnalyzerManager.cs" />
     <Compile Include="Service\Levenshtein.cs" />
     <Compile Include="View\AddEditBlood.xaml.cs">
       <DependentUpon>AddEditBlood.xaml</DependentUpon>
@@ -159,11 +171,20 @@
     <Compile Include="View\AddEditPatient.xaml.cs">
       <DependentUpon>AddEditPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AnalyzerBloodServicePage.xaml.cs">
+      <DependentUpon>AnalyzerBloodServicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AnalyzerPage.xaml.cs">
+      <DependentUpon>AnalyzerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BloodPage.xaml.cs">
       <DependentUpon>BloodPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsurancePage.xaml.cs">
+      <DependentUpon>InsurancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -188,6 +209,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AnalyzerBloodServicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AnalyzerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Authorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InsurancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -283,6 +316,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\InsuranceHtml.html" />
+    <Resource Include="Resources\loader.gif" />
     <EmbeddedResource Include="Resources\EmptyHtml.html" />
     <EmbeddedResource Include="Resources\BloodHtml.html" />
     <Resource Include="Resources\laborant_1.jpeg" />

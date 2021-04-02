@@ -68,3 +68,14 @@ F:\ЯндексДиск\работяга\Четвёртый курс\Второ�
 F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\itext.styledxmlparser.xml
 F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\itext.svg.xml
 F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\obj\Debug\View\AnalyzerBloodServicePage.g.cs
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\obj\Debug\View\AnalyzerPage.g.cs
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\obj\Debug\View\AnalyzerBloodServicePage.baml
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\obj\Debug\View\AnalyzerPage.baml
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\WpfAnimatedGif.dll
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\WpfAnimatedGif.pdb
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\WpfAnimatedGif.xml
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\Newtonsoft.Json.dll
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\bin\Debug\Newtonsoft.Json.xml
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\obj\Debug\View\InsurancePage.g.cs
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory\WSR_Laboratory\obj\Debug\View\InsurancePage.baml

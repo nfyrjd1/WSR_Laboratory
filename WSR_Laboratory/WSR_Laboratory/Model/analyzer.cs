@@ -18,6 +18,7 @@ namespace WSR_Laboratory.Model
         public analyzer()
         {
             this.analyzer_blood_service = new HashSet<analyzer_blood_service>();
+            this.analyzer_service = new HashSet<analyzer_service>();
         }
     
         public int id_analyzer { get; set; }
@@ -25,5 +26,7 @@ namespace WSR_Laboratory.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analyzer_blood_service> analyzer_blood_service { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<analyzer_service> analyzer_service { get; set; }
     }
 }

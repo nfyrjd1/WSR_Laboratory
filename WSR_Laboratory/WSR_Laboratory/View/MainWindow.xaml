@@ -32,8 +32,8 @@
             <Button Content="Биоматериал" Click="BloodBtn_Click" Visibility="Collapsed" Width="135" x:Name="BloodBtn"/>
             <Button Content="Пациенты" Click="PatientsBtn_Click"  Visibility="Collapsed" Width="135" x:Name="PatientsBtn"/>
             <Button Content="Услуги" Click="ServiceBtn_Click"  Visibility="Collapsed" Width="135" x:Name="ServiceBtn"/>
-            <Button Content="Анализаторы" Visibility="Collapsed" Width="135" x:Name="AnalyzerBtn" />
-            <Button Content="Счета" Visibility="Collapsed" Width="135" x:Name="InsuranceBtn" />
+            <Button Content="Анализаторы" Click="AnalyzerBtn_Click" Visibility="Collapsed" Width="135" x:Name="AnalyzerBtn" />
+            <Button Content="Счета" Click="InsuranceBtn_Click" Visibility="Collapsed" Width="135" x:Name="InsuranceBtn" />
             <Button Content="Выйти" Width="135" x:Name="ExitBtn" Click="ExitBtn_Click"/>
         </StackPanel>
     </Grid>

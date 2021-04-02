@@ -103,6 +103,8 @@ namespace WSR_Laboratory.View
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
+            AnalyzerManager.StopTimer();
+
             if (WorkTimer != null)
             {
                 WorkTimer.Stop();
@@ -133,6 +135,16 @@ namespace WSR_Laboratory.View
         private void ServiceBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ServicePage());
+        }
+
+        private void AnalyzerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AnalyzerPage());
+        }
+
+        private void InsuranceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new InsurancePage());
         }
     }
 }

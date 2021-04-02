@@ -17,6 +17,7 @@ namespace WSR_Laboratory.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public service()
         {
+            this.analyzer_service = new HashSet<analyzer_service>();
             this.blood_service = new HashSet<blood_service>();
             this.employee_service = new HashSet<employee_service>();
         }
@@ -25,7 +26,10 @@ namespace WSR_Laboratory.Model
         public string name { get; set; }
         public decimal code { get; set; }
         public decimal price { get; set; }
+        public string result_type { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<analyzer_service> analyzer_service { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<blood_service> blood_service { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,39 @@
+﻿<Page x:Class="WSR_Laboratory.View.AnalyzerBloodServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSR_Laboratory.View"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AnalyzerBloodServicePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="1" x:Name="AnalyzerBloodServiceDG">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Услуга" Width="*" Binding="{Binding service.name}"/>
+                <DataGridTextColumn Header="Статус" Width="*" Binding="{Binding statusStr}"/>
+                <DataGridTextColumn Header="Выполнение" Width="*" Binding="{Binding percentStr}"/>
+                <DataGridTemplateColumn Header="Отправить на исследование" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Image Visibility="{Binding LoaderVisibility}" Height="40" gif:ImageBehavior.AnimatedSource="../Resources/loader.gif"/>
+                                <Button IsEnabled="{Binding ResearchEnabled}" Visibility="{Binding ResearchVisibility}" Width="240" x:Name="ResearchBtn" Click="ResearchBtn_Click" Content="Отправить на исследование"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>            
+        </DataGrid>
+
+        <Button Content="Назад" Grid.Row="2" HorizontalAlignment="Left" x:Name="BackBtn" Click="BackBtn_Click"/>
+    </Grid>
+</Page>

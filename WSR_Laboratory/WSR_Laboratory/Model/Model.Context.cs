@@ -27,6 +27,7 @@ namespace WSR_Laboratory.Model
     
         public virtual DbSet<analyzer> analyzer { get; set; }
         public virtual DbSet<analyzer_blood_service> analyzer_blood_service { get; set; }
+        public virtual DbSet<analyzer_service> analyzer_service { get; set; }
         public virtual DbSet<blood> blood { get; set; }
         public virtual DbSet<blood_service> blood_service { get; set; }
         public virtual DbSet<employee> employee { get; set; }
