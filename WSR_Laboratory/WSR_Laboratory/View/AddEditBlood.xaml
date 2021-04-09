@@ -62,6 +62,7 @@
                 </TextBlock>
                 <TextBlock Visibility="Collapsed" Grid.Row="1" x:Name="PatientSuccessText" Width="Auto" Height="Auto" Margin="5,-5,0,0" TextAlignment="Left" HorizontalAlignment="Left" Style="{StaticResource Text}">
                     Пациент найден.
+                     <Hyperlink Click="EditPatientLink_Click"  x:Name="EditPatientLink">Редактировать</Hyperlink>
                 </TextBlock>
             </Grid>
 

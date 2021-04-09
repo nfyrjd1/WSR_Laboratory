@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="1">
             <Button Content="Пользователь" Width="135" x:Name="UserBtn" Click="UserBtn_Click"/>
             <Button Content="История" Visibility="Collapsed" Width="135" x:Name="HistoryBtn" Click="HistoryBtn_Click"/>
-            <Button Content="Отчёты" Visibility="Collapsed" Width="135" x:Name="ReportBtn" />
+            <Button Content="Отчёты" Click="ReportBtn_Click" Visibility="Collapsed" Width="135" x:Name="ReportBtn" />
             <Button Content="Расходники" Visibility="Collapsed" Width="135" x:Name="ResourcesBtn"/>
             <Button Content="Биоматериал" Click="BloodBtn_Click" Visibility="Collapsed" Width="135" x:Name="BloodBtn"/>
             <Button Content="Пациенты" Click="PatientsBtn_Click"  Visibility="Collapsed" Width="135" x:Name="PatientsBtn"/>

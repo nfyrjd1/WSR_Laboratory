@@ -292,5 +292,23 @@ namespace WSR_Laboratory.View
                 PatientTB_TextChanged(PatientTB, null);
             }
         }
+
+        private void EditPatientLink_Click(object sender, RoutedEventArgs e)
+        {
+            patient patient = Patients.Find(p => p.full_name == PatientTB.Text);
+
+            if (patient == null)
+            {
+                return;
+            }
+
+            ModalWindow modal = new ModalWindow();
+            modal.ModalFrame.Navigate(new AddEditPatient(patient, modal));
+            if (modal.ShowDialog() == true)
+            {
+                Patients = Laboratory.GetContext().patient.ToList();
+                PatientTB_TextChanged(PatientTB, null);
+            }
+        }
     }
 }

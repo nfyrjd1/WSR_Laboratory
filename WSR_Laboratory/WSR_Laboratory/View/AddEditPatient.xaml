@@ -45,10 +45,10 @@
             </Grid>
 
             <TextBlock Text="Email" Grid.Row="2" Style="{StaticResource Text}"/>
-            <TextBox Grid.Column="1" Grid.Row="2" MaxLength="50" Text="{Binding email}"/>
+            <TextBox Grid.Column="1" x:Name="EmailTB" Grid.Row="2" MaxLength="50" Text="{Binding email}"/>
 
             <TextBlock Text="Телефон" Grid.Row="3" Style="{StaticResource Text}"/>
-            <TextBox Grid.Column="1" Grid.Row="3" MaxLength="20" Text="{Binding phone}"/>
+            <TextBox Grid.Column="1" x:Name="PhoneTB" Grid.Row="3" MaxLength="20" Text="{Binding phone}"/>
 
             <TextBlock TextWrapping="Wrap" Text="Номер страхового полиса" Grid.Row="4" Style="{StaticResource Text}"/>
             <TextBox Grid.Column="1" Grid.Row="4" MaxLength="8" Text="{Binding social_number}"/>

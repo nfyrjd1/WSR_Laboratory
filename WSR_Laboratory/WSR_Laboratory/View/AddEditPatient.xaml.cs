@@ -31,6 +31,12 @@ namespace WSR_Laboratory.View
             {
                 this.Modal = Modal;
                 BackBtn.Visibility = Visibility.Collapsed;
+
+                if (patient != null)
+                {
+                    EmailTB.IsReadOnly = true;
+                    PhoneTB.IsReadOnly = true;
+                }
             }
 
             InsuranceCB.ItemsSource = Laboratory.GetContext().insurance.ToList();

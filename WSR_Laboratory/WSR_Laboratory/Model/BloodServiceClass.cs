@@ -90,5 +90,21 @@ namespace WSR_Laboratory.Model
         }
 
         public bool ResearchEnabled { get; set; }
+
+        public int PatientsCount { get; set; }
+
+        public int ResultCount { get; set; }
+        public double ResultSum { get; set; }
+
+        public double AverageResult { 
+            get
+            {
+                if (ResultCount == 0)
+                {
+                    return 0;
+                }
+                return ResultSum / ResultCount;
+            }
+        }
     }
 }

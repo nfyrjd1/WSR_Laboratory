@@ -146,5 +146,10 @@ namespace WSR_Laboratory.View
         {
             MainFrame.Navigate(new InsurancePage());
         }
+
+        private void ReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ReportPage());
+        }
     }
 }
