@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WSR_Laboratory_Mobile.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="#498C51"/>
+                <Setter Property="FontFamily" Value="Comic Sans Ms"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="HeightRequest" Value="40"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontFamily" Value="Comic Sans Ms"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontFamily" Value="Comic Sans Ms"/>
+            </Style>
+            <Style TargetType="Editor">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontFamily" Value="Comic Sans Ms"/>
+                <Setter Property="AutoSize" Value="TextChanges"/>
+            </Style>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#76E383"/>
+                <Setter Property="BarTextColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

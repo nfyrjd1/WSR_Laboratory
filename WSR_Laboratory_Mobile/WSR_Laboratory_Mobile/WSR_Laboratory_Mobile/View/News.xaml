@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WSR_Laboratory_Mobile.View.News" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="NewsLV" SelectionMode="None" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Text="{Binding Title}" FontAttributes="Bold" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
+
+                                <Label Grid.Row="1" Text="{Binding Text}" LineBreakMode="WordWrap"/>
+
+                                <Label Text="{Binding Date}" Grid.Row="2" FontSize="Small" HorizontalTextAlignment="End"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>        
+    </ContentPage.Content>
+</ContentPage>

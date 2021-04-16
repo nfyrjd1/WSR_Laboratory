@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WSR_Laboratory_Mobile.View.Register" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="3">
+                <Label Text="ФИО:"/>
+                <Entry MaxLength="80" Text="{Binding Name, Mode=TwoWay}"/>
+
+                <Label Text="Дата рождения:"/>
+                <DatePicker Date="{Binding Birthday, Mode=TwoWay}"/>
+
+                <Label Text="Паспорт:"/>
+                <Entry MaxLength="10" Keyboard="Numeric" Text="{Binding Passport, Mode=TwoWay}"/>
+
+                <Label Text="Страховой полис:"/>
+                <Entry Keyboard="Numeric" MaxLength="20" Text="{Binding Insurance, Mode=TwoWay}"/>
+
+                <Label Text="Телефон:"/>
+                <Entry Keyboard="Telephone" MaxLength="16" Text="{Binding Phone, Mode=TwoWay}"/>
+
+                <Label Text="Email:"/>
+                <Entry Keyboard="Email" MaxLength="80" Text="{Binding Email, Mode=TwoWay}"/>
+
+                <Label Text="Логин:"/>
+                <Entry MaxLength="80" Text="{Binding Login, Mode=TwoWay}"/>
+
+                <Label Text="Пароль:"/>
+                <Entry MaxLength="80" Text="{Binding Password, Mode=TwoWay}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Отмена" HorizontalOptions="FillAndExpand" x:Name="CancelBtn" Clicked="CancelBtn_Clicked"/>
+                    <Button Text="Сохранить" HorizontalOptions="FillAndExpand" x:Name="SaveBtn" Clicked="SaveBtn_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

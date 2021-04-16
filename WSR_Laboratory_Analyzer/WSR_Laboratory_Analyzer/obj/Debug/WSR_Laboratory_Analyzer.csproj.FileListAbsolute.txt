@@ -1,0 +1,6 @@
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory_Analyzer\WSR_Laboratory_Analyzer\bin\Debug\WSR_Laboratory_Analyzer.dll
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory_Analyzer\WSR_Laboratory_Analyzer\bin\Debug\WSR_Laboratory_Analyzer.pdb
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory_Analyzer\WSR_Laboratory_Analyzer\obj\Debug\WSR_Laboratory_Analyzer.csprojAssemblyReference.cache
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory_Analyzer\WSR_Laboratory_Analyzer\obj\Debug\WSR_Laboratory_Analyzer.csproj.CoreCompileInputs.cache
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory_Analyzer\WSR_Laboratory_Analyzer\obj\Debug\WSR_Laboratory_Analyzer.dll
+F:\ЯндексДиск\работяга\Четвёртый курс\Второй семак\WSR\WSR_Laboratory\WSR_Laboratory_Analyzer\WSR_Laboratory_Analyzer\obj\Debug\WSR_Laboratory_Analyzer.pdb

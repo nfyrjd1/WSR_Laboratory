@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WSR_Laboratory_Mobile.View.User" Appearing="User_Appearing" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="ФИО:" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Name}"/>
+
+            <Label Text="Дата рождения:" Grid.Row="1" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="1" VerticalTextAlignment="Center" Text="{Binding BirthdayStr}"/>
+
+            <Label Text="Возраст:" Grid.Row="2" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="2" VerticalTextAlignment="Center" Text="{Binding Age}"/>
+
+            <Label Text="Паспорт:" Grid.Row="3" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="3" VerticalTextAlignment="Center" Text="{Binding PassportStr}"/>
+
+            <Label Text="Страховой полис:" Grid.Row="4" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="4" VerticalTextAlignment="Center" Text="{Binding InsuranceStr}"/>
+
+            <Label Text="Телефон:" Grid.Row="5" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="5" VerticalTextAlignment="Center" Text="{Binding PhoneStr}"/>
+
+            <Label Text="Email:" Grid.Row="6" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="6" VerticalTextAlignment="Center" Text="{Binding EmailStr}"/>
+
+            <Label Text="Логин:" Grid.Row="7" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="7" VerticalTextAlignment="Center" Text="{Binding Login}"/>
+
+            <Label Text="Пароль:" Grid.Row="8" VerticalTextAlignment="Center"/>
+            <Label Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="8" VerticalTextAlignment="Center" Text="{Binding Password}"/>
+
+            <Grid Grid.Row="10" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Редактировать" Grid.Column="1" x:Name="UserBtn" Clicked="UserBtn_Clicked"/>
+                <Button Text="Выйти" x:Name="ExitBtn" Clicked="ExitBtn_Clicked"/>
+            </Grid>            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

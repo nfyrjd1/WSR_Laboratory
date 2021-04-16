@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  Appearing="MainPage_Appearing"
+             x:Class="WSR_Laboratory_Mobile.View.MainPage" Title="Лаборатория №20">
+
+    <StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Button Text="Новости" x:Name="NewsBtn" Clicked="NewsBtn_Clicked"/>
+            <Button Text="Услуги" x:Name="ServiceBtn" Clicked="ServiceBtn_Clicked"/>
+            <Button Text="Авторизация" IsVisible="false" x:Name="AuthBtn" Clicked="AuthBtn_Clicked"/>
+            <Button Text="Профиль" IsVisible="false"  x:Name="UserBtn" Clicked="UserBtn_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

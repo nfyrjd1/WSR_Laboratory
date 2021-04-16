@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WSR_Laboratory_Mobile.View.EditUser" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Padding="10" Spacing="3">
+                <Label Text="Телефон:" />
+                <Entry MaxLength="16" Keyboard="Telephone" Text="{Binding Phone, Mode=TwoWay}"/>
+
+                <Label Text="Email:"/>
+                <Entry MaxLength="80" Keyboard="Email" Text="{Binding Email, Mode=TwoWay}"/>
+
+                <Label Text="Пароль:"/>
+                <Entry MaxLength="80" Text="{Binding Password, Mode=TwoWay}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Отмена" x:Name="CancelBtn" HorizontalOptions="FillAndExpand" Clicked="CancelBtn_Clicked"/>
+                    <Button Text="Сохранить" x:Name="SaveBtn" HorizontalOptions="FillAndExpand" Clicked="SaveBtn_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
